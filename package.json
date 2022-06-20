@@ -15,11 +15,13 @@
     "release": "standard-version",
     "push-release": "git push --follow-tags origin main",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "gitmoji -c"
   },
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",
     "clsx": "^1.1.1",
+    "gitmoji-cli": "^5.0.1",
     "next": "^12.1.6",
     "next-api-og-image": "^4.0.1",
     "react": "^18.1.0",
@@ -28,8 +30,6 @@
     "tailwind-merge": "^1.2.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.3.0",
-    "@commitlint/config-conventional": "^16.2.4",
     "@svgr/webpack": "^6.2.1",
     "@tailwindcss/forms": "^0.5.2",
     "@testing-library/jest-dom": "^5.16.4",
