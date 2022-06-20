@@ -12,13 +12,20 @@ enum QueryParams {
 export default withOGImage<'query', keyof typeof QueryParams>({
   template: {
     html: async ({ title, theme, size, description }) => {
+      const query = {
+        title,
+        theme,
+        size,
+        description,
+      };
+
       return `
         <html lang="zh-TW">
           <head>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            ${getStyle({ title, theme, size, description })}
+            ${getStyle(query)}
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -27,13 +34,16 @@ export default withOGImage<'query', keyof typeof QueryParams>({
           <body>
             <div class="container">
               <img class="social_img" src="https://honghong.me/static/images/logo/logo-black.png">
-              <h1 class="title">${title ?? 'ProjectName'}</h1>
-              <p class="description">${description ?? 'description'}</p>
+              <h1 class="title">${query.title ?? 'ProjectName'}</h1>
+              <p class="description">${query.description ?? 'description'}</p>
             </div>
           </body>
       </html>
       `;
     },
+  },
+  dev: {
+    inspectHtml: true,
   },
 });
 
@@ -75,7 +85,6 @@ const getStyle = (
       h1 {
         font-size: 1.5rem;
         font-size: 3.5rem;
-        line-height: 1.1;
       }
       
       .title {
