@@ -8,7 +8,7 @@ export default async function BlogAPI(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { title, theme, description, size } = req.query;
+  const { title, theme, description, size, logo } = req.query;
 
   const html = `
     <html lang="zh-TW">
@@ -78,7 +78,9 @@ export default async function BlogAPI(
       </head>
       <body>
         <div class="container">
-          <img class="social_img" src="https://honghong.me/static/images/logo/logo-black.png">
+          <img class="social_img" src="${
+            logo ?? 'https://honghong.me/static/images/logo/logo-black.png'
+          }">
           <h1 class="title">${title ?? 'ProjectName'}</h1>
           <p class="description">${description ?? 'description'}</p>
         </div>

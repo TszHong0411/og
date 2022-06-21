@@ -8,7 +8,8 @@ export default async function BlogAPI(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { title, theme, description, size } = req.query;
+  const { title, theme, description, size, logo, name, username, website } =
+    req.query;
 
   const html = `
     <html lang="zh-TW">
@@ -101,9 +102,12 @@ export default async function BlogAPI(
             <div class="social_left">
               <img
                 class="social_img"
-                src="https://honghong.me/static/images/logo/logo-black.png"
+                src="${
+                  logo ??
+                  'https://honghong.me/static/images/logo/logo-black.png'
+                }"
               />
-              <span class="name">小康</span>
+              <span class="name">${name ?? '小康'}</span>
             </div>
           </div>
           <div>
@@ -112,10 +116,10 @@ export default async function BlogAPI(
           </div>
           <div class="social">
             <div>
-              <p class="website">honghong.me</p>
+              <p class="website">${website ?? 'honghong.me'}</p>
             </div>
             <div>
-              <p class="instagram">@tszhong0411</p>
+              <p class="instagram">@${username ?? 'tszhong0411'}</p>
             </div>
           </div>
         </div>

@@ -14,10 +14,14 @@ import Seo from '@/components/Seo';
 type Query = Record<keyof typeof GeneralQueryEnum | 'ogType', string>;
 
 export default function IndexPage() {
-  const [link, setLink] = React.useState('https://og.honghong.me/api/general');
-  const [imgLink, setImgLink] = React.useState(
-    'https://og.honghong.me/api/general'
+  const [link, setLink] = React.useState(
+    'https://og.honghong.me/api/general?theme=dark'
   );
+  const [imgLink, setImgLink] = React.useState(
+    'https://og.honghong.me/api/general?theme=dark'
+  );
+
+  const [select, setSelect] = React.useState<string>('general');
 
   //#region  //*=========== Forms ===========
   const methods = useForm<Query>({
@@ -52,6 +56,11 @@ export default function IndexPage() {
     setImgLink(link);
   };
   //#endregion  //*======== Submit ===========
+
+  const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelect(e.target.value);
+  };
+
   return (
     <Layout>
       <Seo />
@@ -67,6 +76,7 @@ export default function IndexPage() {
                       id='ogType'
                       label='OG Image type'
                       helperText='API type routes'
+                      onChange={selectHandler}
                     >
                       <option value='general'>general</option>
                       <option value='blog'>blog</option>
@@ -85,6 +95,25 @@ export default function IndexPage() {
                       <option value='dark'>dark</option>
                       <option value='light'>light</option>
                     </SelectInput>
+                    {select === 'blog' && (
+                      <>
+                        <Input
+                          id='name'
+                          label='Name'
+                          helperText='Default: 小康'
+                        />
+                        <Input
+                          id='website'
+                          label='Personal website url'
+                          helperText='Default: honghong.me'
+                        />
+                        <Input
+                          id='username'
+                          label='Instagram username'
+                          helperText='Default: tszhong0411'
+                        />
+                      </>
+                    )}
                     <Button
                       variant='dark'
                       type='submit'
