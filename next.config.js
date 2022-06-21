@@ -6,12 +6,9 @@ module.exports = {
 
   reactStrictMode: true,
 
-  // Uncoment to add domain whitelist
-  // images: {
-  //   domains: [
-  //     'res.cloudinary.com',
-  //   ],
-  // },
+  images: {
+    domains: ['honghong.me', 'og.honghong.me'],
+  },
 
   // SVGR
   webpack(config) {
