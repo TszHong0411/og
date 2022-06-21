@@ -31,6 +31,9 @@ export default async function getOgImage(html: string) {
 
   const options = await getOptions(isDev);
 
+  // Add fonts
+  await chrome.font('../../public/fonts/Inter-VariableFont_slnt,wght.ttf');
+
   // launch a new headless browser with dev / prod options
   const browser = await puppeteer.launch(options);
   const page = await browser.newPage();
