@@ -26,7 +26,7 @@ export default async function BlogAPI(
             box-sizing: border-box;
           }
           body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Noto Sans TC', sans-serif;
           }
           .container {
             width: 100vw;
@@ -70,7 +70,10 @@ export default async function BlogAPI(
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet"
+        />
         <title>API</title>
       </head>
       <body>

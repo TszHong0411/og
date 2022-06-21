@@ -1,4 +1,4 @@
-import chromium from 'chrome-aws-lambda';
+import chrome from 'chrome-aws-lambda';
 import puppeteer from 'puppeteer-core';
 
 import { isDev } from '@/lib/constants';
@@ -11,11 +11,6 @@ export default async function getOgImage(html: string) {
       ? '/usr/bin/google-chrome'
       : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
-  // Add fonts
-  await chromium.font(
-    'https://cdn.jsdelivr.net/gh/tszhong0411/og/public/fonts/Inter-VariableFont_slnt,wght.ttf'
-  );
-
   async function getOptions(isDev: boolean) {
     let options;
     if (isDev) {
@@ -26,9 +21,9 @@ export default async function getOgImage(html: string) {
       };
     } else {
       options = {
-        args: chromium.args,
-        executablePath: await chromium.executablePath,
-        headless: chromium.headless,
+        args: chrome.args,
+        executablePath: await chrome.executablePath,
+        headless: chrome.headless,
       };
     }
     return options;
